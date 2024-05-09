@@ -1,3 +1,9 @@
+"""
+Autor: Daniel Benjamin Perez Morales
+GitHub: https://github.com/DanielPerezMoralesDev13
+Correo electrónico: danielperezdev@proton.me 
+"""
+
 Mi nombre es Daniel
 Mi apellido es Perez
 18 años

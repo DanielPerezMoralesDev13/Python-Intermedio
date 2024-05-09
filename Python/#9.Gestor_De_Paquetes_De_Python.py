@@ -1,3 +1,8 @@
+"""
+Autor: Daniel Benjamin Perez Morales
+GitHub: https://github.com/DanielPerezMoralesDev13
+Correo electrónico: danielperezdev@proton.me 
+"""
 # Tema: Python Package Manager (PIP) o Gestor de Paquetes de Python
 
 """

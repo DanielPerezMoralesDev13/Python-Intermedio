@@ -1,29 +1,32 @@
-# **_Repositorio de Python Intermedio_**
+<!-- Autor: Daniel Benjamin Perez Morales -->
+<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- Correo electrónico: danielperezdev@proton.me  -->
+# **_Intermediate Python Repository_**
 
 > [!IMPORTANT]
-> _Este repositorio contiene una serie de ficheros de Python diseñados para introducir conceptos intermedios del lenguaje de programación Python. Cada fichero aborda un tema específico, desde la comprensión de listas hasta el manejo de ficheros._
+> _This repository contains a series of Python files designed to introduce intermediate concepts of the Python programming language. Each file addresses a specific topic, from understanding lists to file handling._
 
-## ficheros
+## Files
 
-1. **#1.TiempoDatos.py**: _Introduce el manejo de tiempo y datos en Python._
-2. **#2.ComprensionListas.py**: _Explica la comprensión de listas en Python._
-3. **#3.ejercicio.py**: _Contiene ejercicios para practicar los conceptos aprendidos._
-4. **#4.lambdas.py**: _Introduce las funciones lambda en Python._
-5. **#5.Higher_Order_Functions_O_Funciones_De_Orden_Superior.py**: _Explica las funciones de orden superior en Python._
-6. **#6.Tipos_De_Error.py**: _Introduce los diferentes tipos de errores en Python y cómo manejarlos._
-7. **#7.Manejos_de_ficheros.py**: _Explica cómo manejar ficheros en Python._
-8. **#8.Expresiones_Regulares.py**: _Introduce el uso de expresiones regulares en Python._
-9. **#9.python_package_manager.py**: _Explica cómo usar el gestor de paquetes de Python._
+1. **#1.TimeData.py**: _Introduces time and data handling in Python._
+2. **#2.ListComprehensions.py**: _Explains list comprehensions in Python._
+3. **#3.exercise.py**: _Contains exercises to practice the learned concepts._
+4. **#4.lambdas.py**: _Introduces lambda functions in Python._
+5. **#5.Higher_Order_Functions.py**: _Explains higher-order functions in Python._
+6. **#6.Error_Types.py**: _Introduces different types of errors in Python and how to handle them._
+7. **#7.File_Handling.py**: _Explains how to handle files in Python._
+8. **#8.Regular_Expressions.py**: _Introduces the use of regular expressions in Python._
+9. **#9.python_package_manager.py**: _Explains how to use the Python package manager._
 
-## **Uso**
+## **Usage**
 
-_Puedes ejecutar cualquiera de los ficheros usando Python en tu terminal. Por ejemplo:_
+_You can execute any of the files using Python in your terminal. For example:_
 
 ```bash
-python3 #1.TiempoDatos.py
+python3 #1.TimeData.py
 ```
 
 > [!NOTE]
-> *Estos ficheros están diseñados para ser explorados secuencialmente para una comprensión progresiva de Python.*
+> _These files are designed to be explored sequentially for a progressive understanding of Python._
 
-- [**Introduccion-Python**](https://github.com/DanielPerezMorales13/Python-Introduccion "https://github.com/DanielPerezMorales13/Python-Introduccion")
+- [**Introduction-Python**](https://github.com/DanielPerezMorales13/Python-Introduccion "https://github.com/DanielPerezMorales13/Python-Introduccion")

@@ -1,3 +1,8 @@
+"""
+Autor: Daniel Benjamin Perez Morales
+GitHub: https://github.com/DanielPerezMoralesDev13
+Correo electrónico: danielperezdev@proton.me 
+"""
 from functools import reduce
 
 # Tema: Higher Order Functions o Funciones de Orden Superior
