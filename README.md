@@ -23,7 +23,7 @@
 _You can execute any of the files using Python in your terminal. For example:_
 
 ```bash
-python3 #1.TimeData.py
+python3 "00 Time Data.py"
 ```
 
 > [!NOTE]
