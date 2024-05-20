@@ -8,15 +8,15 @@
 
 ## Files
 
-1. **#1.TimeData.py**: _Introduces time and data handling in Python._
-2. **#2.ListComprehensions.py**: _Explains list comprehensions in Python._
-3. **#3.exercise.py**: _Contains exercises to practice the learned concepts._
-4. **#4.lambdas.py**: _Introduces lambda functions in Python._
-5. **#5.Higher_Order_Functions.py**: _Explains higher-order functions in Python._
-6. **#6.Error_Types.py**: _Introduces different types of errors in Python and how to handle them._
-7. **#7.File_Handling.py**: _Explains how to handle files in Python._
-8. **#8.Regular_Expressions.py**: _Introduces the use of regular expressions in Python._
-9. **#9.python_package_manager.py**: _Explains how to use the Python package manager._
+1. **00 Time Data.py**: _Introduces time and data handling in Python._
+2. **#01 List Comprehensions.py**: _Explains list comprehensions in Python._
+3. **#02 Exercise.py**: _Contains exercises to practice the learned concepts._
+4. **03 Lambdas.py**: _Introduces lambda functions in Python._
+5. **04 Higher Order Functions.py**: _Explains higher-order functions in Python._
+6. **05 Error Types.py**: _Introduces different types of errors in Python and how to handle them._
+7. **06 File Handling.py**: _Explains how to handle files in Python._
+8. **07 Regular Expressions.py**: _Introduces the use of regular expressions in Python._
+9. **08 Python Package Manager.py**: _Explains how to use the Python package manager._
 
 ## **Usage**
 
