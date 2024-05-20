@@ -8,15 +8,15 @@
 
 ## ficheros
 
-1. **#1.TiempoDatos.py**: _Introduce el manejo de tiempo y datos en Python._
-2. **#2.ComprensionListas.py**: _Explica la comprensión de listas en Python._
-3. **#3.ejercicio.py**: _Contiene ejercicios para practicar los conceptos aprendidos._
-4. **#4.lambdas.py**: _Introduce las funciones lambda en Python._
-5. **#5.Higher_Order_Functions_O_Funciones_De_Orden_Superior.py**: _Explica las funciones de orden superior en Python._
-6. **#6.Tipos_De_Error.py**: _Introduce los diferentes tipos de errores en Python y cómo manejarlos._
-7. **#7.Manejos_de_ficheros.py**: _Explica cómo manejar ficheros en Python._
-8. **#8.Expresiones_Regulares.py**: _Introduce el uso de expresiones regulares en Python._
-9. **#9.python_package_manager.py**: _Explica cómo usar el gestor de paquetes de Python._
+1. **00 Tiempo Datos.py**: _Introduce el manejo de tiempo y datos en Python._
+2. **01 Comprension Listas.py**: _Explica la comprensión de listas en Python._
+3. **02 Ejercicio.py**: _Contiene ejercicios para practicar los conceptos aprendidos._
+4. **03 Lambdas.py**: _Introduce las funciones lambda en Python._
+5. **04 Higher Order Functions O Funciones De Orden Superior.py**: _Explica las funciones de orden superior en Python._
+6. **05 Tipos De Error.py**: _Introduce los diferentes tipos de errores en Python y cómo manejarlos._
+7. **06 Manejos De Ficheros.py**: _Explica cómo manejar ficheros en Python._
+8. **07 Expresiones Regulares.py**: _Introduce el uso de expresiones regulares en Python._
+9. **08 Python Package Manager.py**: _Explica cómo usar el gestor de paquetes de Python._
 
 ## **Uso**
 
