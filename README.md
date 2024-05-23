@@ -10,7 +10,7 @@
 
 1. **00 Time Data.py**: _Introduces time and data handling in Python._
 2. **01 List Comprehensions.py**: _Explains list comprehensions in Python._
-3. **#02 Exercise.py**: _Contains exercises to practice the learned concepts._
+3. **02 Exercise.py**: _Contains exercises to practice the learned concepts._
 4. **03 Lambdas.py**: _Introduces lambda functions in Python._
 5. **04 Higher Order Functions.py**: _Explains higher-order functions in Python._
 6. **05 Error Types.py**: _Introduces different types of errors in Python and how to handle them._
