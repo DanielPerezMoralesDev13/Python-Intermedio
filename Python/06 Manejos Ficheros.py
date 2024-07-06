@@ -11,12 +11,12 @@ io es un módulo de Python que proporciona una forma de utilizar las funciones d
 import io
 
 """
-csv (Comma Separated Values) o valores separados por comas es un formato de archivo que se utiliza para almacenar datos tabulares, como una base de datos o una hoja de cálculo.
+csv (Comma Separated Values) o valores separados por comas es un formato de fichero que se utiliza para almacenar datos tabulares, como una base de datos o una hoja de cálculo.
 """
 import csv
 
 """
-json (JavaScript Object Notation) o notación de objetos de JavaScript es un formato de archivo que se utiliza para almacenar y transmitir datos.
+json (JavaScript Object Notation) o notación de objetos de JavaScript es un formato de fichero que se utiliza para almacenar y transmitir datos.
 """
 
 import json
@@ -28,7 +28,7 @@ os es un módulo de Python que proporciona una forma de utilizar las funciones d
 import os
 
 """
-xml (eXtensible Markup Language) o lenguaje de marcado extensible es un formato de archivo que se utiliza para almacenar y transmitir datos.
+xml (eXtensible Markup Language) o lenguaje de marcado extensible es un formato de fichero que se utiliza para almacenar y transmitir datos.
 """
 
 import xml
@@ -71,7 +71,7 @@ a+: append y read (añade al final del fichero y lee el fichero)
 
 """
 fichero_txt: io.TextIOWrapper = open(
-    file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.txt",
+    file="fichero.txt",
     mode="w+",
     encoding="utf-8",
     buffering=-1,
@@ -154,7 +154,7 @@ y el fichero se cerrará automáticamente al finalizar el bloque de código o al
 
 """
 with open(
-    file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.txt",
+    file="fichero.txt",
     mode="a",
     encoding="utf-8",
     buffering=-1,
@@ -173,7 +173,7 @@ toma dos argumentos:
 path: el nombre del fichero que se va a eliminar.
 dir_fd: el descriptor de fichero del directorio que contiene el fichero que se va a eliminar. Por defecto es None. Lo que significa que el directorio que contiene el fichero es el directorio de trabajo actual.
 """
-# * os.remove(path="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.txt", dir_fd=None)
+# * os.remove(path="fichero.txt", dir_fd=None)
 
 
 # .json fichero
@@ -181,7 +181,7 @@ dir_fd: el descriptor de fichero del directorio que contiene el fichero que se v
 
 """
 json_fichero: io.TextIOWrapper = open(
-    file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.json",
+    file="fichero.json",
     mode="w+",
     encoding="utf-8",
     buffering=-1,
@@ -254,7 +254,7 @@ para cerrar el fichero usamos el método close().
 
 """
 with open(
-    file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.json",
+    file="fichero.json",
     mode="r",
     encoding="utf-8",
     buffering=-1,
@@ -291,7 +291,7 @@ todos los argumentos que recibe son
 """
 diccionario_json: dict[str : str | int] = json.load(
     fp=open(
-        file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.json",
+        file="fichero.json",
         mode="r",
         encoding="utf-8",
         buffering=-1,
@@ -330,7 +330,7 @@ acceder a un valor del diccionario
 
 """
 fichero_csv = open(
-    file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.csv",
+    file="fichero.csv",
     mode="w+",
     encoding="utf-8",
     buffering=-1,
@@ -403,7 +403,7 @@ csv_escribir.writerow(["Benjamin", "Morales", 18, "COBOL", "https://python3.dev"
 
 """
 with open(
-    file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.csv",
+    file="fichero.csv",
     mode="w+",
     encoding="utf-8",
     buffering=-1,
@@ -455,9 +455,9 @@ todos los argumentos que recibe son
 child: ET.Element = ET.SubElement(root, "child", attrib={"version": "1.0"})
 
 
-child.text: str = "Este es el texto del elemento hijo"
+child.text = "Este es el texto del elemento hijo"
 
-# Crear un archivo XML y escribir el árbol en él
+# Crear un fichero XML y escribir el árbol en él
 """
 wb: write binary (sobrescribe el fichero si ya existe)
 """
@@ -467,11 +467,11 @@ tree esta variable es de tipo xml.etree.ElementTree.ElementTree
 es utilizada para crear un árbol XML. A un árbol XML se le conoce como un árbol de elementos. Un árbol de elementos es una estructura de datos que se utiliza para representar un documento XML. Un árbol de elementos es un árbol en el que cada nodo es un elemento XML. Un elemento XML es una etiqueta que contiene un conjunto de atributos y un conjunto de nodos hijos. Un nodo hijo es un nodo que está conectado a otro nodo a través de una arista. Una arista es una línea que conecta dos nodos.
 """
 tree: xml.etree.ElementTree.ElementTree = ET.ElementTree(
-    element=root, file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.xml"
+    element=root, file="fichero.xml"
 )
 
 with open(
-    file="Ruta_de_aprendizaje/Python/#2 Intermedio/fichero.xml",
+    file="fichero.xml",
     mode="wb",
     encoding=None,
     buffering=-1,

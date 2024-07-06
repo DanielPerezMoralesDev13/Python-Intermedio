@@ -28,7 +28,7 @@ Es un sistema de gestión de paquetes utilizado para instalar y administrar paqu
 
 >>> Para actualizar un paquete se utiliza el comando pip install --upgrade nombre_del_paquete.
 
->>> Para instalar un paquete desde un archivo se utiliza el comando pip install nombre_del_paquete-1.0.tar.gz.
+>>> Para instalar un paquete desde un fichero se utiliza el comando pip install nombre_del_paquete-1.0.tar.gz.
 
 >>> Si no tienes pip instalado, puedes instalarlo con el comando python get-pip.py en sistemas Unix o python get-pip.py --user en sistemas Windows.
 
