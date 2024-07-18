@@ -1,6 +1,6 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
 <!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
-<!-- Correo electrónico: danielperezdev@proton.me  -->
+<!-- Correo electrónico: danielperezdev@proton.me -->
 # **_Repositorio de Python Intermedio_**
 
 > [!IMPORTANT]
@@ -29,12 +29,12 @@ python3 "00 Tiempo Datos.py"
 > [!NOTE]
 > _Estos ficheros están diseñados para ser explorados secuencialmente para una comprensión progresiva de Python._
 
-## ***Contribuciones***
+## _**Contribuciones**_
 
-> *¡Se aceptan contribuciones! Si tienes sugerencias, correcciones o deseas agregar contenido adicional a esta guía, no dudes en abrir un problema o enviar una solicitud de extracción. Tu ayuda es fundamental para hacer de esta guía una referencia completa y actualizada para la comunidad de desarrollo.*
+> _¡Se aceptan contribuciones! Si tienes sugerencias, correcciones o deseas agregar contenido adicional a esta guía, no dudes en abrir un problema o enviar una solicitud de extracción. Tu ayuda es fundamental para hacer de esta guía una referencia completa y actualizada para la comunidad de desarrollo._
 
-## ***Licencia***
+## _**Licencia**_
 
-> *Este repositorio se publica bajo la Licencia MIT. Siéntete libre de utilizar, modificar y distribuir el contenido de acuerdo con los términos de esta licencia.*
+> _Este repositorio se publica bajo la Licencia MIT. Siéntete libre de utilizar, modificar y distribuir el contenido de acuerdo con los términos de esta licencia._
 
 - [**Introduccion-Python**](https://github.com/DanielPerezMorales13/Python-Introduccion "https://github.com/DanielPerezMorales13/Python-Introduccion")

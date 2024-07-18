@@ -3,7 +3,13 @@ Autor: Daniel Benjamin Perez Morales
 GitHub: https://github.com/DanielPerezMoralesDev13
 Correo electrónico: danielperezdev@proton.me 
 """
+
 # Tema: Python Package Manager (PIP) o Gestor de Paquetes de Python
+
+# Dependencias necesarias
+# python3 -m pip install pandas-stubs
+# mypy --install-types
+# python3 -m pip install types-requests
 
 """
 Es un sistema de gestión de paquetes utilizado para instalar y administrar paquetes de software escritos en Python. 
@@ -42,11 +48,20 @@ Es un sistema de gestión de paquetes utilizado para instalar y administrar paqu
 # * pip install pip
 # * pip --version
 
+"""
+Parece que PyPI ya no admite la función de búsqueda a través de XML-RPC, que es lo que `pip search` solía utilizar. Ahora, para buscar paquetes en PyPI, te recomendaría usar el sitio web oficial de PyPI o la interfaz de búsqueda en línea en lugar del comando `pip search`.
+
+Puedes visitar [https://pypi.org/search](https://pypi.org/search) para buscar paquetes directamente desde tu navegador web. Esto te proporcionará la información más actualizada sobre los paquetes disponibles en PyPI.
+"""
+
+from sys import stdout
 import numpy
+import requests
+import pandas
 
 # * pip install numpy
-import pandas
-import requests
+# pip list | grep -iE "numpy"
+
 
 """
 Para ver la version de numpy se puede usar el siguiente comando:
@@ -57,26 +72,27 @@ Para obtener la versión mayor de numpy se puede usar el siguiente comando:
 
 print(numpy.version.version)
 """
-print(numpy.__version__, end="\n")
+print(numpy.__version__, end ="\n", file = stdout)
 
-numpy_lista: numpy.ndarray = numpy.array(object=[35, 24, 62, 52, 30, 30, 17])
-print(type(numpy_lista), end="\n")
+numpyLista: numpy.ndarray = numpy.array(object=[35, 24, 62, 52, 30, 30, 17])
+print(type(numpyLista), end ="\n", file = stdout)
 
-print(numpy_lista * 2, end="\n")
+print(numpyLista * 2, end ="\n", file = stdout)
 
-# # * pip install pandas
+# * pip install pandas
 
-# # * pip list
-# # * pip uninstall pandas
-# # * pip show numpy
+# * pip list
+# * pip uninstall pandas
+# * pip show numpy
+# * pip install six
 
-# # * pip install requests
+# * pip install requests
 
 response: requests.models.Response = requests.get(
     url="https://pokeapi.co/api/v2/pokemon?limit=151"
 )
-print(response, end="\n")
-print(response.status_code, end="\n")
+print(response, end ="\n", file = stdout)
+print(response.status_code, end ="\n", file = stdout)
 print(
     response.json(
         cls=None,
@@ -86,11 +102,11 @@ print(
         parse_constant=None,
         object_pairs_hook=None,
     ),
-    end="\n",
+    end="\n", file = stdout
 )
 
 # Arithmetics Package o Módulo
 
-from Module.aritmeticos import sumarDosValores
+from Module.aritmeticos import sumar_dos_valores
 
-print(sumarDosValores(primer_valor=5, segundo_valor=10), end="\n")
+print(sumar_dos_valores(primerValor = 5, segundoValor = 10), end ="\n", file = stdout)

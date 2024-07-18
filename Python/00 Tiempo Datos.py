@@ -7,8 +7,12 @@ Correo electrónico: danielperezdev@proton.me
 # Tema: Date time o tiempo y fechas
 
 """
-la libreria datetime nos permite trabajar con fechas y horas en python
-ademas de realizar operaciones con fechas y horas como sumar, restar, comparar, etc. Tambien podemos formatear fechas y horas a nuestro gusto. 
+En Python, el uso del asterisco (*) en la definición de parámetros de funciones tiene un propósito específico relacionado con la legibilidad y la claridad del código. Cuando se coloca un asterisco en los parámetros de una función, obliga a que todos los parámetros que siguen al asterisco deban ser pasados como argumentos con nombre (keyword arguments). Esto se hace para mejorar la legibilidad del código y hacer más claro cuáles argumentos están siendo pasados a la función.
+"""
+
+"""
+La Libreria Datetime Nos Permite Trabajar Con Fechas Y Horas En Python
+Ademas De Realizar Operaciones Con Fechas Y Horas Como Sumar, Restar, Comparar, Etc. Tambien Podemos Formatear Fechas Y Horas A Nuestro Gusto. 
 """
 
 # datetime: Nos permite trabajar con fechas y horas a la vez
@@ -16,9 +20,10 @@ ademas de realizar operaciones con fechas y horas como sumar, restar, comparar, 
 # date: Nos permite trabajar con fechas
 # timedelta: Nos permite realizar operaciones con fechas y horas
 from datetime import date, datetime, time, timedelta
+from sys import stdout
 
 # ahora es una instancia de la clase datetime que nos da la fecha y hora actual del sistema en el que se ejecuta el programa
-ahora: datetime = datetime.now(tz=None)
+ahora: datetime = datetime.now(tz = None)
 
 
 """
@@ -98,9 +103,9 @@ timestamp que es el numero de segundos que han pasado desde el 1 de enero de 197
     >>> %R nos devuelve la hora en formato 24 horas
 """
 
-
-def imprimirDate(date: datetime) -> str:
-    return f"""
+# El \ al final de la primera línea sirve para continuar la cadena en la siguiente línea sin agregar una nueva línea real. Esto es útil para mantener el formato en el código fuente mientras se evita una nueva línea en la cadena resultante.
+def imprimir_date(*, date: datetime) -> str:
+    return f"""\
 .year = {date.year}
 .month = {date.month}
 .day = {date.day}
@@ -114,22 +119,22 @@ def imprimirDate(date: datetime) -> str:
 """
 
 
-print(imprimirDate(date=ahora), end="\n")
+print(imprimir_date(date = ahora), end ="\n", file = stdout)
 
 
-año_2023: datetime = datetime(
-    day=1,
-    month=1,
-    year=2023,
-    hour=0,
-    minute=0,
-    second=0,
-    microsecond=0,
-    tzinfo=None,
-    fold=0,
+año2023: datetime = datetime(
+    day = 1,
+    month = 1,
+    year = 2023,
+    hour = 0,
+    minute = 0,
+    second = 0,
+    microsecond = 0,
+    tzinfo = None,
+    fold = 0
 )
 """
-año_2023 es una instancia de la clase datetime que nos da la fecha y hora del 1 de enero de 2023 a las 00:00:00
+año2023 es una instancia de la clase datetime que nos da la fecha y hora del 1 de enero de 2023 a las 00:00:00
 >>> datetime es una clase que nos permite trabajar con fechas y horas a la vez
 >>> .year este atributo nos devuelve el año de la fecha
 >>> .month este atributo nos devuelve el mes de la fecha
@@ -142,60 +147,61 @@ año_2023 es una instancia de la clase datetime que nos da la fecha y hora del 1
 >>> .fold este atributo nos devuelve el doblez de la fecha
 """
 
-# * print(imprimirDate(date=año_2023),end="\n")
+# * print(imprimir_date(date=año2023), end ="\n", file = stdout)
 
 # Time
 
 # la funcion time nos permite crear una instancia de la clase time que nos permite trabajar con horas
-hora_actual: time = time(
-    hour=20,
-    minute=18,
-    second=25,
-    microsecond=518783,
-    tzinfo=None,
-    fold=0,
+horaActual: time = time(
+    hour = 20,
+    minute = 18,
+    second = 25,
+    microsecond = 518783,
+    tzinfo = None,
+    fold = 0
 )
 
-print("Hora Actual -> hora %d" % hora_actual.hour, end="\n")
-print("Hora Actual -> minutos %d" % hora_actual.minute, end="\n")
-print("Hora Actual -> segundos %d" % hora_actual.second, end="\n")
+print("Hora Actual -> hora %d" % horaActual.hour, end ="\n", file = stdout)
+print("Hora Actual -> minutos %d" % horaActual.minute, end ="\n", file = stdout)
+print("Hora Actual -> segundos %d" % horaActual.second, end ="\n", file = stdout)
 
 # Date
 """
 El metodo .today() nos devuelve la fecha actual del sistema en el que se ejecuta el programa
 """
-fecha_actual: date = date.today()
+fechaActual = date.today()
 
-print(f"Fecha actual -> año {fecha_actual.year}", end="\n")
-print(f"Fecha actual -> mes {fecha_actual.month}", end="\n")
-print(f"Fecha actual -> dia {fecha_actual.day}", end="\n")
+print(f"Fecha actual -> año {fechaActual.year}", end ="\n", file = stdout)
+print(f"Fecha actual -> mes {fechaActual.month}", end ="\n", file = stdout)
+print(f"Fecha actual -> dia {fechaActual.day}", end ="\n", file = stdout)
 
-fecha_actual: date = date(
-    day=5,
-    month=2,
-    year=1992,
+fechaActual = date(
+    day = 5,
+    month = 2,
+    year = 1992,
 )
 
-print("Fecha actual -> año {año}".format(año=fecha_actual.year), end="\n")
-print("Fecha actual -> mes {mes}".format(mes=fecha_actual.month), end="\n")
-print("Fecha actual -> dia {dia}".format(dia=fecha_actual.day), end="\n")
+print("Fecha actual -> año {año}".format(año=fechaActual.year), end ="\n", file = stdout)
+print("Fecha actual -> mes {mes}".format(mes=fechaActual.month), end ="\n", file = stdout)
+print("Fecha actual -> dia {dia}".format(dia=fechaActual.day), end ="\n", file = stdout)
 
-fecha_actual: date = date(
-    year=fecha_actual.year,
-    month=fecha_actual.month + 1,
-    day=fecha_actual.day,
+fechaActual = date(
+    year = fechaActual.year,
+    month = fechaActual.month + 1,
+    day = fechaActual.day
 )
 
-print("Fecha actual -> mes {0}".format(fecha_actual.month), end="\n")
+print("Fecha actual -> mes {0}".format(fechaActual.month), end ="\n", file = stdout)
 
 # Operaciones con fechas
 
-diferencia: datetime = año_2023 - ahora
-print(f"año_2023 - ahora -> {diferencia}", end="\n")
+diferencia: timedelta = año2023 - ahora
+
+print(f"año2023 - ahora -> {diferencia}", end ="\n", file = stdout)
 
 # * El metodo .date() nos devuelve la fecha de la instancia de la clase datetime
-diferencia: datetime = año_2023.date() - fecha_actual
-print(f"año_2023.date() - fecha_actual -> {diferencia}", end="\n")
+diferencia = año2023.date() - fechaActual
+print(f"año2023.date() - fechaActual -> {diferencia}", end ="\n", file = stdout)
 
 # Timedelta o diferencia de tiempo
 """
@@ -208,26 +214,30 @@ El metodo timedelta nos permite realizar operaciones con fechas y horas
 
 """
 empieza: timedelta = timedelta(
-    days=200,
-    hours=100,
-    minutes=200,
-    seconds=30,
-    microseconds=40,
-    milliseconds=50,
-    weeks=2,
+    days = 200,
+    hours = 100,
+    minutes = 200,
+    seconds = 30,
+    microseconds = 40,
+    milliseconds = 50,
+    weeks = 2
 )
 termina: timedelta = timedelta(
     days=100,
     hours=100,
     minutes=100,
     seconds=100,
-    microseconds=100,
-    milliseconds=100,
-    weeks=100,
+    microseconds = 100,
+    milliseconds = 100,
+    weeks = 100
 )
 
-print(f"termina - empieza -> {termina - empieza}", end="\n")
-print(f"termina + empieza -> {termina + empieza}", end="\n")
+print(f"termina - empieza -> {termina - empieza}", end ="\n", file = stdout)
+print(f"termina + empieza -> {termina + empieza}", end ="\n", file = stdout)
 
 # datetime.utcnow() nos devuelve la fecha y hora actual del sistema en el que se ejecuta el programa
-print(f"datetime.utcnow() -> {datetime.utcnow()}", end="\n")
+"""
+El método "utcnow" en la clase "datetime" está en desuso
+Use timezone-aware objects to represent datetimes in UTC; e.g. by calling .now(datetime.UTC)
+"""
+print(f"datetime.utcnow() -> {datetime.utcnow()}", end ="\n", file = stdout)

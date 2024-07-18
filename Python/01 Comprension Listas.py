@@ -17,140 +17,148 @@ Estructura:
 [expresión for elemento in iterable]
 """
 
+from sys import stdout
+from typing import Dict, List, Set, Tuple, Union
+
 # Ejemplo 1 con datos int
-lista: list[int] = [0, 1, 2, 3, 4, 5, 6, 7]
-print(f"{lista}", end="\n")
+lista: List[Union[int, str]] = [0, 1, 2, 3, 4, 5, 6, 7]
+print(f"{lista}", end ="\n", file = stdout)
 
 rango: range = range(8)
-print(f"list(rango) -> {list(rango)}", end="\n")
-print(f"type(rango) -> {type(rango)}", end="\n")
+print(f"list(rango) -> {list(rango)}", end ="\n", file = stdout)
+print(f"type(rango) -> {type(rango)}", end ="\n", file = stdout)
 
 # Definición
 
-lista_comprimida: list[int] = [int(iterable) + 1 for iterable in range(0, 8, 1)]
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+listaComprimida: List[Union[int, str, List[Union[int, str]]]] = [int(iterable) + 1 for iterable in range(0, 8, 1)]
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-lista_comprimida: list[int] = [int(iterable) * 2 for iterable in range(0, 8, 1)]
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+listaComprimida = [int(iterable) * 2 for iterable in range(0, 8, 1)]
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-lista_comprimida: list[int] = [int(iterable) * iterable for iterable in range(0, 8, 1)]
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+listaComprimida = [int(iterable) * iterable for iterable in range(0, 8, 1)]
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-
-def sumarCinco(numero: int) -> int:
+def sumar_cinco(*, numero: int) -> int:
     return numero + 5
 
 
 # Tambien se pueden utilizar funciones en la comprensión de listas
 
-lista_comprimida: list[int] = [
-    sumarCinco(numero=int(iterable)) for iterable in range(0, 8, 1)
+listaComprimida = [
+    sumar_cinco(numero = int(iterable)) for iterable in range(0, 8, 1)
 ]
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-conjuntos_comprimidos: set[int] = {int(iterable) for iterable in range(0, 8, 1)}
-print(f"conjuntos comprimidos = {conjuntos_comprimidos}", end="\n")
+conjuntosComprimidos: Set[Union[int, str]] = set({int(iterable) for iterable in range(0, 8, 1)})
+# conjuntosComprimidos: Set[int] = {int(iterable) for iterable in range(0, 8, 1)}
 
-tuplas_comprimidas: tuple[int] = tuple(int(iterable) for iterable in range(0, 8, 1))
-print(f"tuplas comprimidas = {tuplas_comprimidas}", end="\n")
+print(f"conjuntos comprimidos = {conjuntosComprimidos}", end ="\n", file = stdout)
 
-diccionario_comprimido: dict[int, int] = {
+tuplasComprimidas: Tuple[Union[Tuple[int, ...], int, str], ...] = tuple(int(iterable) for iterable in range(0, 8, 1))
+print(f"tuplas comprimidas = {tuplasComprimidas}", end ="\n", file = stdout)
+
+diccionarioComprimido: Dict[Union[int, str], Union[int, str]] = {
     int(iterable): int(iterable) for iterable in range(0, 8, 1)
 }
-print(f"diccionario comprimido = {diccionario_comprimido}", end="\n")
+print(f"diccionario comprimido = {diccionarioComprimido}", end ="\n", file = stdout)
 
 
 # Ejemplo 2 con datos str
 
-lista: list[str] = ["hola", "mundo", "como", "estas"]
-print(f"{lista}", end="\n")
+lista = ["hola", "mundo", "como", "estas"]
+print(f"{lista}", end ="\n", file = stdout)
 
-lista_comprimida: list[str] = [str(iterable) for iterable in lista]
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+listaComprimida = [str(iterable) for iterable in lista]
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-tuplas_comprimidas: tuple[str] = tuple(str(iterable) for iterable in lista)
+tuplasComprimidas = tuple(str(iterable) for iterable in lista)
 
-print(f"tuplas comprimidas = {tuplas_comprimidas}", end="\n")
+print(f"tuplas comprimidas = {tuplasComprimidas}", end ="\n", file = stdout)
 
-conjuntos_comprimidos: set[str] = {str(iterable) for iterable in lista}
+conjuntosComprimidos = set({str(iterable) for iterable in lista})
+# conjuntosComprimidos = {str(iterable) for iterable in lista}
 
-print(f"conjuntos comprimidos = {conjuntos_comprimidos}", end="\n")
+print(f"conjuntos comprimidos = {conjuntosComprimidos}", end ="\n", file = stdout)
 
-diccionario_comprimido: dict[str, str] = {
+diccionarioComprimido = {
     str(iterable): str(iterable) for iterable in lista
 }
-print(f"diccionario comprimido = {diccionario_comprimido}", end="\n")
+print(f"diccionario comprimido = {diccionarioComprimido}", end ="\n", file = stdout)
 
 
 """
 tambien se pueden utilizar condicionales en la comprensión de listas
 """
 
-lista_comprimida: list[int] = [
+listaComprimida = [
     int(iterable) for iterable in range(0, 8, 1) if iterable % 2 == 0
 ]
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-tuplas_comprimidas: tuple[int] = tuple(
+tuplasComprimidas = tuple(
     int(iterable) for iterable in range(0, 8, 1) if iterable % 3 == 0
 )
 
-print(f"tuplas comprimidas = {tuplas_comprimidas}", end="\n")
+print(f"tuplas comprimidas = {tuplasComprimidas}", end ="\n", file = stdout)
 
-conjuntos_comprimidos: set[int] = {
+conjuntosComprimidos = {
     int(iterable) for iterable in range(0, 8, 1) if iterable % 4 == 0
 }
 
-print(f"conjuntos comprimidos = {conjuntos_comprimidos}", end="\n")
+print(f"conjuntos comprimidos = {conjuntosComprimidos}", end ="\n", file = stdout)
 
-diccionario_comprimido: dict[int, int] = {
+diccionarioComprimido = {
     int(iterable): int(iterable) for iterable in range(0, 8, 1) if iterable % 5 == 0
 }
 
-lista_buena: list[int] = ["b", "c", "d", "a", "i"]
-lista_mala: list[str] = ["a", "e", "i", "o", "u"]
+listaBuena: List[str] = ["b", "c", "d", "a", "i"]
+listaMala: List[str] = ["a", "e", "i", "o", "u"]
 """
-Lo que estas haciendo es recorrer la lista_mala y si el elemento esta en la lista_buena lo agregas a la lista_comprimida
+Lo que estas haciendo es recorrer la listaMala y si el elemento esta en la listaBuena lo agregas a la listaComprimida
 """
-lista_comprimida: list[str] = [
-    str(iterable) for iterable in lista_mala if iterable in lista_buena
+listaComprimida = [
+    str(iterable) for iterable in listaMala if iterable in listaBuena
 ]
 
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-tuplas_comprimidas: tuple[str] = tuple(
-    str(iterable) for iterable in lista_mala if iterable in lista_buena
+tuplasComprimidas = tuple(
+    str(iterable) for iterable in listaMala if iterable in listaBuena
 )
 
-print(f"tuplas comprimidas = {tuplas_comprimidas}", end="\n")
+print(f"tuplas comprimidas = {tuplasComprimidas}", end ="\n", file = stdout)
 
-conjuntos_comprimidos: set[str] = {
-    str(iterable) for iterable in lista_mala if iterable in lista_buena
+conjuntosComprimidos = {
+    str(iterable) for iterable in listaMala if iterable in listaBuena
 }
 
-print(f"conjuntos comprimidos = {conjuntos_comprimidos}", end="\n")
+print(f"conjuntos comprimidos = {conjuntosComprimidos}", end ="\n", file = stdout)
 
-diccionario_comprimido: dict[str, str] = {
-    str(iterable): str(iterable) for iterable in lista_mala if iterable in lista_buena
+diccionarioComprimido = {
+    str(iterable): str(iterable) for iterable in listaMala if iterable in listaBuena
 }
 
 """
-tambien se pueden pasar estructuras anidadas en la comprensión de listas aunque no es tan común
+Tambien se pueden pasar estructuras anidadas en la comprensión de listas aunque no es tan común
 """
+
 """
 En este caso estamos creando una lista de listas de enteros
-En la primera iteración se crea una lista de enteros del 0 al 7 y se agrega a la lista_comprimida
+En la primera iteración se crea una lista de enteros del 0 al 7 y se agrega a la listaComprimida
 En la segunda iteración se dice que se repita la primera iteración 3 veces creando una lista de listas de enteros
 
-se puede crear otra variable o utilizar la misma variable para la comprensión de listas si una variable no se utiliza se puede utilizar el guion bajo
+Se puede crear otra variable o utilizar la misma variable para la comprensión de listas si una variable no se utiliza se puede utilizar el guion bajo
 """
-lista_comprimida: list[list[int]] = [
+listaComprimida = [
     [int(iterable) for iterable in range(0, 8, 1)] for _ in range(0, 3, 1)
 ]
-print(f"lista comprimida = {lista_comprimida}", end="\n")
+print(f"lista comprimida = {listaComprimida}", end ="\n", file = stdout)
 
-tuplas_comprimidas: tuple[tuple[int]] = tuple(
-    [tuple(int(iterable) for iterable in range(0, 8, 1)) for _ in range(0, 3, 1)]
+tuplasComprimidas = tuple(
+    tuple(
+        int(iterable) for iterable in range(0, 8, 1)
+    ) for _ in range(0, 3, 1)
 )
 
-print(f"tuplas comprimidas = {tuplas_comprimidas}", end="\n")
+print(f"tuplas comprimidas = {tuplasComprimidas}", end ="\n", file = stdout)

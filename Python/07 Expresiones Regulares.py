@@ -5,11 +5,57 @@ Correo electrónico: danielperezdev@proton.me
 """
 # Tema: Regular Expressions (RegEx) - Expresiones Regulares
 
+
+"""
+El tipo de dato `Optional` en Python, provisto por el módulo `typing`, se utiliza para indicar que una variable puede contener un valor del tipo especificado o `None`. Esencialmente, `Optional[T]` significa que la variable puede ser de tipo `T` o `None`.
+
+### Propósito y Casos de Uso de `Optional`:
+
+1. **Claridad en la Intención del Código:**
+   - `Optional` ayuda a clarificar la intención del código al indicar explícitamente que una variable podría estar vacía (`None`). Esto mejora la legibilidad y reduce la ambigüedad sobre los posibles valores que puede contener una variable.
+
+2. **Manejo Seguro de Valores Nulos:**
+   - En Python, `None` se usa comúnmente para representar la ausencia de un valor válido. Al usar `Optional`, se asegura que el desarrollador o el análisis está consciente de esta posibilidad y puede manejarla adecuadamente en el código.
+
+3. **Aplicaciones Prácticas:**
+   - **Retornos de Funciones:** Cuando una función puede no devolver un valor válido en todas las circunstancias, se puede especificar el tipo de retorno como `Optional[T]`.
+   
+   - **Argumentos de Funciones:** Para indicar que un argumento de función puede ser opcional y puede ser `None`.
+   
+   - **Atributos de Clases:** En clases y estructuras de datos, para indicar que ciertos atributos pueden no estar inicializados o no tener un valor asignado.
+   
+   - **Resultados de Búsquedas o Consultas:** Cuando se realizan operaciones como búsquedas en bases de datos, donde es posible que no se encuentre ningún resultado válido.
+
+### Ejemplo Práctico:
+
+```python
+from typing import Dict, Optional
+
+def buscar_persona(nombre: str) -> Optional[str]:
+    # Simulación de búsqueda en una base de datos
+    baseDeDatos: Dict[str, str] = {"Daniel": "Ingeniero", "Danna": "Doctora"}
+    
+    if nombre not in baseDeDatos: return None  # Si no se encuentra, retornamos None
+    return baseDeDatos[nombre]
+    
+
+resultado: Optional[str] = buscar_persona("Daniel")
+if resultado is not None: print(f"{resultado} encontrado en la base de datos.")
+else: print("La persona no se encontró en la base de datos.")
+```
+
+En este ejemplo, `buscar_persona` retorna `Optional[str]`, indicando que puede devolver un `str` con la ocupación de la persona si se encuentra en la base de datos, o `None` si no se encuentra. Al verificar `resultado is not None`, se maneja de forma segura el caso donde no se encuentra la persona buscada.
+
+En resumen, `Optional` es una herramienta útil en Python para mejorar la claridad, seguridad y manejo de casos donde los valores pueden estar ausentes o no definidos, facilitando el desarrollo de código más robusto y fácil de entender.
+"""
+
 """
 re es un módulo que permite trabajar con expresiones regulares.
 Las expresiones regulares son patrones utilizados para encontrar una determinada combinación de caracteres dentro de una cadena de texto.
 """
 import re
+from sys import stdout, exit
+from typing import Any, List, Optional
 
 # match
 
@@ -46,11 +92,14 @@ todas las banderas o flags disponibles en el módulo re son:
 """
 
 string: str = "Esta es la lección número 7: Lección llamada Expresiones Regulares"
-otra_string: str = "Esta no es la lección número 6: Manejo de ficheros"
+otraString: str = "Esta no es la lección número 6: Manejo de ficheros"
 
-match: re.Match = re.match(pattern="Esta es la lección", string=string, flags=re.I)
-# flags=re.I es para que no sea sensible a mayúsculas y minúsculas
-# flags=re.IGNORECASE es para que no sea sensible a mayúsculas y minúsculas
+match: Optional[re.Match[str]] = re.match(pattern = "Esta es la lección", string = string, flags = re.I)
+
+if match is None: exit(1)
+
+# flags = re.I es para que no sea sensible a mayúsculas y minúsculas
+# flags = re.IGNORECASE es para que no sea sensible a mayúsculas y minúsculas
 
 """
 Si imprimo match, me mostrará el objeto match, que es un objeto que contiene la información de la coincidencia encontrada. Si no encuentra ninguna coincidencia, me mostrará None.
@@ -70,26 +119,32 @@ match='Esta es la lección' es la cadena de texto que coincide con el patrón.
 >>> Si imprimo match.span(), me mostrará la posición inicial y final del patrón encontrado.
 
 """
-print(match, end="\n")
+print(match, end ="\n", file = stdout)
 
-print(match.group(), end="\n")
+print(match.group(), end ="\n", file = stdout)
 
 """
 El método span() devuelve una tupla con la posición inicial y final del patrón encontrado.
-print(match.span(), end="\n") # (0, 18)
+print(match.span(), end ="\n", file = stdout) # (0, 18)
 """
+
+empieza: Optional[int] = None
+termina: Optional[int] = None
+
 empieza, termina = match.span()
-print(string[empieza:termina:1], end="\n")
 
-match = re.match(pattern="Esta no es la lección", string=otra_string, flags=0)
-# # if not(match == None): # Otra forma de comprobar el None
+print(string[empieza:termina:1], end ="\n", file = stdout)
+
+match = re.match(pattern = "Esta no es la lección", string = otraString, flags = 0)
+# if not(match == None): # Otra forma de comprobar el None
 # if match != None: # Otra forma de comprobar el None
-if match is not None:
-    print(match, end="\n")
-    empieza, termina = match.span()
-    print(otra_string[empieza:termina:1], end="\n")
 
-print(re.match(pattern="Expresiones Regulares", string=string, flags=0), end="\n")
+if match is not None:
+    print(match, end ="\n", file = stdout)
+    empieza, termina = match.span()
+    print(otraString[empieza:termina:1], end ="\n", file = stdout)
+
+print(re.match(pattern = "Expresiones Regulares", string = string, flags = 0), end ="\n", file = stdout)
 
 
 # search
@@ -105,18 +160,23 @@ Los parámetros son:
 
 >>> flags: Opcional. Se utiliza para especificar diferentes banderas. Por ejemplo, re.I es para que no sea sensible a mayúsculas y minúsculas.
 """
-search: re.Match = re.search("lección", string, re.I)
-print(search, end="\n")
+
+search: Optional[re.Match[str]] = re.search("lección", string, re.I)
+if search is None: exit(1)
+
+print(search, end ="\n", file = stdout)
 
 """
 El método span() devuelve una tupla con la posición inicial y final del patrón encontrado.
 
 Se le pasa el objeto match que se obtiene con el método search().
 """
+
 empieza, termina = search.span()
-print(string[empieza:termina:1], end="\n")
+print(string[empieza:termina:1], end ="\n", file = stdout)
 
 # findall
+
 """
 El método findall() busca un patrón en toda la cadena de texto. Si el patrón es encontrado, devuelve una lista con todas las coincidencias encontradas, en caso contrario devuelve una lista vacía.
 
@@ -129,8 +189,8 @@ los parámetros son:
 >>> flags: Opcional. Se utiliza para especificar diferentes banderas. Por ejemplo, re.I es para que no sea sensible a mayúsculas y minúsculas.
 """
 
-findall: list[str] = re.findall(pattern="lección", string=string, flags=re.IGNORECASE)
-print(findall, end="\n")
+findall: List[str] = re.findall(pattern = "lección", string = string, flags = re.IGNORECASE)
+print(findall, end ="\n", file = stdout)
 
 # split
 
@@ -142,7 +202,7 @@ los parámetros son:
 >>> string: La cadena de texto que se dividirá.
 >>> maxsplit: Opcional. Especifica el número máximo de divisiones que se realizarán. Por defecto es 0, que no tiene límite.
 """
-print(re.split(pattern=":", string=string, flags=0, maxsplit=0), end="\n")
+print(re.split(pattern = ":", string = string, flags = 0, maxsplit=0), end ="\n", file = stdout)
 
 # sub
 
@@ -167,15 +227,15 @@ los parámetros son:
 En esta expresión regular, [lL]ección, [lL] significa que puede ser l o L, y ección significa que tiene que ser ección.
 """
 print(
-    re.sub(pattern="[l|L]ección", repl="LECCIÓN", string=string, count=0, flags=0),
-    end="\n",
+    re.sub(pattern = "[l|L]ección", repl = "LECCIÓN", string = string, count = 0, flags = 0),
+    end="\n", file = stdout
 )
 
 print(
     re.sub(
-        pattern="Expresiones Regulares", repl="RegEx", string=string, count=0, flags=0
+        pattern = "Expresiones Regulares", repl = "RegEx", string = string, count = 0, flags = 0
     ),
-    end="\n",
+    end="\n", file = stdout
 )
 
 
@@ -196,36 +256,36 @@ En esta expresión regular, [lL]ección, [lL] significa que puede ser l o L, y e
 """
 
 pattern: str = r"[lL]ección"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 En esta expresión regular, [lL]ección|Expresiones, [lL] significa que puede ser l o L, ección significa que tiene que ser ección, | significa o, y Expresiones significa que tiene que ser Expresiones. O sea, que tiene que ser lección o Lección, o Expresiones. Si no se pone |, tiene que ser lección o Lección y Expresiones. Si se pone |, tiene que ser lección o Lección o Expresiones. Si en la cadena de texto hay lección, Lección o Expresiones, se mostrará en la lista.
 """
 pattern = r"[lL]ección|Expresiones"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
-string: str = "Esta es la lección número 7: Lección llamada Expresiones Regulares"
-otra_string: str = "Esta no es la lección número 6: Manejo de ficheros"
+string = "Esta es la lección número 7: Lección llamada Expresiones Regulares"
+otraString = "Esta no es la lección número 6: Manejo de ficheros"
 
 """
 El [0-9] significa que tiene que ser un número del 0 al 9. Si en la cadena de texto hay un número del 0 al 9, se mostrará en la lista.
 """
-pattern: str = r"[0-9]"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"[0-9]"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
-print(re.search(pattern=pattern, string=string, flags=0), end="\n")
+print(re.search(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 El \d significa que tiene que ser un dígito. Si en la cadena de texto hay un dígito, se mostrará en la lista. Es lo mismo que [0-9].
 """
-pattern: str = r"\d"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"\d"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 El \D significa que tiene que ser un carácter que no sea un dígito. Si en la cadena de texto hay un carácter que no sea un dígito, se mostrará en la lista.
 """
-pattern: str = r"\D"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"\D"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular \w significa que tiene que ser un carácter alfanumérico o un guión bajo. Si en la cadena de texto hay un carácter alfanumérico o un guión bajo, se mostrará en la lista.
@@ -233,8 +293,8 @@ La expresión regular \w significa que tiene que ser un carácter alfanumérico 
 los caracteres alfanuméricos son las letras del alfabeto (mayúsculas y minúsculas) y los números y el guión bajo.
 """
 
-pattern: str = r"\w"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"\w"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular \W significa que tiene que ser un carácter que no sea alfanumérico o un guión bajo. Si en la cadena de texto hay un carácter que no sea alfanumérico o un guión bajo, se mostrará en la lista.
@@ -242,8 +302,8 @@ La expresión regular \W significa que tiene que ser un carácter que no sea alf
 los caracteres alfanuméricos son las letras del alfabeto (mayúsculas y minúsculas) y los números y el guión bajo.
 """
 
-pattern: str = r"\W"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"\W"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular \s significa que tiene que ser un espacio en blanco. Si en la cadena de texto hay un espacio en blanco, se mostrará en la lista.
@@ -251,15 +311,15 @@ La expresión regular \s significa que tiene que ser un espacio en blanco. Si en
 los espacios en blanco son los espacios, los saltos de línea y los tabuladores.
 """
 
-pattern: str = r"\s"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"\s"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular \S significa que tiene que ser un carácter que no sea un espacio en blanco. Si en la cadena de texto hay un carácter que no sea un espacio en blanco, se mostrará en la lista.
 """
 
-pattern: str = r"\S"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"\S"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular ^ significa que tiene que ser el principio de la cadena de texto. Si en la cadena de texto hay un carácter que esté al principio, se mostrará en la lista.
@@ -268,8 +328,8 @@ Si en la cadena de texto hay un carácter que no esté al principio, no se mostr
 """
 
 # Busca el primer carácter de la cadena de texto que sea una E
-pattern: str = r"^E"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"^E"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 
 """
@@ -279,49 +339,50 @@ Si en la cadena de texto hay un carácter que no esté al final, no se mostrará
 """
 
 # Busca el último carácter de la cadena de texto que sea una s
-pattern: str = r"s$"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"s$"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular . significa que tiene que ser cualquier carácter. Si en la cadena de texto hay cualquier carácter, se mostrará en la lista.
 """
 
-pattern: str = r"."
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"."
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular .* significa que tiene que ser cualquier carácter, cero o más veces. Si en la cadena de texto hay cualquier carácter, cero o más veces, se mostrará en la lista.
 """
 
-pattern: str = r".*"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r".*"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular .+ significa que tiene que ser cualquier carácter, una o más veces. Si en la cadena de texto hay cualquier carácter, una o más veces, se mostrará en la lista.
 """
 
-pattern: str = r".+"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r".+"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular .{1,3} significa que tiene que ser cualquier carácter, de 1 a 3 veces. Si en la cadena de texto hay cualquier carácter, de 1 a 3 veces, se mostrará en la lista.
 """
 
-pattern: str = r".{1,3}"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r".{1,3}"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 La expresión regular [l].* significa que tiene que ser una l, cero o más veces. Si en la cadena de texto hay una l, cero o más veces, se mostrará en la lista. El punto significa cualquier carácter. El asterisco significa cero o más veces.
 """
-pattern: str = r"[l].*"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+
+pattern = r"[l].*"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 """
 Otra forma sería [l].+ que significa que tiene que ser una l, una o más veces. Si en la cadena de texto hay una l, una o más veces, se mostrará en la lista. El punto significa cualquier carácter. El más significa una o más veces.
 """
 
-pattern: str = r"[l].+"
-print(re.findall(pattern=pattern, string=string, flags=0), end="\n")
+pattern = r"[l].+"
+print(re.findall(pattern = pattern, string = string, flags = 0), end ="\n", file = stdout)
 
 
 email: str = "danielperez13@danieldev.com"
@@ -353,10 +414,11 @@ r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z-.]+$"
 
 >>> $ significa que tiene que ser el final de la cadena de texto.
 """
-pattern: str = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z-.]+$"
-print(re.match(pattern=pattern, string=email, flags=0), end="\n")
-print(re.search(pattern=pattern, string=email, flags=0), end="\n")
-print(re.findall(pattern=pattern, string=email, flags=0), end="\n")
 
-email: str = "danielperez@danieldev.com.io"
-print(re.findall(pattern=pattern, string=email, flags=0), end="\n")
+pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z-.]+$"
+print(re.match(pattern = pattern, string = email, flags = 0), end ="\n", file = stdout)
+print(re.search(pattern = pattern, string = email, flags = 0), end ="\n", file = stdout)
+print(re.findall(pattern = pattern, string = email, flags = 0), end ="\n", file = stdout)
+
+email = "danielperez@danieldev.com.io"
+print(re.findall(pattern = pattern, string = email, flags = 0), end ="\n", file = stdout)

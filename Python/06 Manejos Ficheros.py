@@ -9,6 +9,7 @@ Correo electrónico: danielperezdev@proton.me
 io es un módulo de Python que proporciona una forma de utilizar las funciones dependientes del sistema operativo.
 """
 import io
+from typing import Dict, List, Union
 
 """
 csv (Comma Separated Values) o valores separados por comas es un formato de fichero que se utiliza para almacenar datos tabulares, como una base de datos o una hoja de cálculo.
@@ -70,7 +71,7 @@ a+: append y read (añade al final del fichero y lee el fichero)
 
 
 """
-fichero_txt: io.TextIOWrapper = open(
+ficheroTxt: io.TextIOWrapper = open(
     file="fichero.txt",
     mode="w+",
     encoding="utf-8",
@@ -84,7 +85,7 @@ fichero_txt: io.TextIOWrapper = open(
 
 
 """
-fichero_txt.write(
+ficheroTxt.write(
     "Mi nombre es Daniel\nMi apellido es Perez\n18 años\nY mi lenguaje preferido es Python"
 )
 """
@@ -98,11 +99,11 @@ Ejemplo:
 el primer argumento es 0 que significa que el puntero de lectura se moverá al principio del fichero.
 el segundo argumento es 0, que significa que el punto de referencia es el principio del fichero.
 
-fichero_txt.seek(0, 0)
+ficheroTxt.seek(0, 0)
 """
 
 
-# * fichero_txt.seek(0, 0)
+# * ficheroTxt.seek(0, 0)
 
 """
 El método read() lee el contenido del fichero y lo devuelve como una cadena de texto.
@@ -110,25 +111,25 @@ El método read() toma un argumento opcional que es el número de caracteres que
 Si no se especifica ningún argumento, el método read() lee todo el contenido del fichero. 
 """
 
-# * print(fichero_txt.read(), end="\n")
+# * print(ficheroTxt.read(), end ="\n", file = stdout)
 
-# *print(fichero_txt.read(10),end="\n")
+# *print(ficheroTxt.read(10), end ="\n", file = stdout)
 
 """
 El método readline() lee una línea del fichero y la devuelve como una cadena de texto.
 El método readline() toma un argumento opcional que es el número de caracteres que se van a leer de la línea.
 """
 
-# * print(fichero_txt.readline(),end="\n")
-# * print(fichero_txt.readline(10),end="\n")
+# * print(ficheroTxt.readline(), end ="\n", file = stdout)
+# * print(ficheroTxt.readline(10), end ="\n", file = stdout)
 
 """
 el metodo readlines() lee todas las líneas del fichero y las devuelve como una lista de cadenas de texto.
 """
-# * print(fichero_txt.readlines(), end="\n")
+# * print(ficheroTxt.readlines(), end ="\n", file = stdout)
 
-# * for linea in fichero_txt.readlines():
-# * print(linea, end="\n")
+# * for linea in ficheroTxt.readlines():
+# * print(linea, end ="\n", file = stdout)
 
 
 """
@@ -136,15 +137,15 @@ Añadir al final del fichero usamos el \n para que se añada en una nueva línea
 si no se añade el \n se añadirá al final de la última línea.
 """
 
-# * fichero_txt.write("\nAunque también me gusta JavaScript")
-# * print(fichero_txt.readline(), end="\n")
+# * ficheroTxt.write("\nAunque también me gusta JavaScript")
+# * print(ficheroTxt.readline(), end ="\n", file = stdout)
 
 
 """
 Para cerrar el fichero usamos el método close().
 """
 
-# * fichero_txt.close()
+# * ficheroTxt.close()
 
 
 """
@@ -162,8 +163,8 @@ with open(
     newline=None,
     closefd=True,
     opener=None,
-) as otro_fichero_fichero:
-    otro_fichero_fichero.write("\nY C también")
+) as otroFichero:
+    otroFichero.write("\nY C también")
 
 """
 
@@ -180,7 +181,7 @@ dir_fd: el descriptor de fichero del directorio que contiene el fichero que se v
 
 
 """
-json_fichero: io.TextIOWrapper = open(
+jsonFichero: io.TextIOWrapper = open(
     file="fichero.json",
     mode="w+",
     encoding="utf-8",
@@ -191,7 +192,8 @@ json_fichero: io.TextIOWrapper = open(
     opener=None,
 )
 """
-json_test = {
+
+jsonTest: Dict[str, Union[str, int, List[str]]] = {
     "nombre": "Daniel",
     "apellido": "Perez",
     "edad": 18,
@@ -232,8 +234,8 @@ dump() todos los argumentos que recibe son
 
 """
 json.dump(
-    obj=json_test,
-    fp=json_fichero,
+    obj=jsonTest: Dict[str, Union[str, int, List[str]]],
+    fp=jsonFichero,
     skipkeys=False,
     ensure_ascii=True,
     check_circular=True,
@@ -247,10 +249,10 @@ json.dump(
 """
 
 """
-para cerrar el fichero usamos el método close().
+Para cerrar el fichero usamos el método close().
 """
 
-# * json_fichero.close()
+# * jsonFichero.close()
 
 """
 with open(
@@ -262,16 +264,16 @@ with open(
     newline=None,
     closefd=True,
     opener=None,
-) as otro_fichero:
-    for linea in otro_fichero.readlines():
-        print(linea, end="\n")
+) as otrofichero:
+    for linea in otrofichero.readlines():
+        print(linea, end ="\n", file = stdout)
 """
 
 
 """
 El método load() es utilizado para leer datos de un fichero en formato JSON.
 
-todos los argumentos que recibe son
+Todos los argumentos que recibe son
 >>> fp: el fichero del que se van a leer los datos. fp es una abreviatura de fichero pointer o puntero de fichero.
 
 >>> cls: la clase que se va a utilizar para decodificar el objeto. Por defecto es None. Lo que significa que se va a utilizar la clase JSONDecoder.
@@ -289,7 +291,7 @@ todos los argumentos que recibe son
 """
 
 """
-diccionario_json: dict[str : str | int] = json.load(
+diccionarioJson: Dict[str, Union[str, int]] = json.load(
     fp=open(
         file="fichero.json",
         mode="r",
@@ -311,35 +313,32 @@ diccionario_json: dict[str : str | int] = json.load(
 """
 
 """
-imprimir el diccionario 
+Imprimir el diccionario 
 """
-# * print(diccionario_json, end="\n")
+# * print(diccionarioJson, end ="\n", file = stdout)
 
 """
-imprimir el tipo de la variable diccionario_json
+Imprimir el tipo de la variable diccionarioJson
 """
-# * print(type(diccionario_json),end="\n")
+# * print(type(diccionarioJson), end ="\n", file = stdout)
 
 """
-acceder a un valor del diccionario
+Acceder a un valor del diccionario
 """
-# * print(diccionario_json["nombre"],end="\n")
+# * print(diccionarioJson["nombre"], end ="\n", file = stdout)
 
 # .csv fichero
 
-
-"""
-fichero_csv = open(
-    file="fichero.csv",
-    mode="w+",
-    encoding="utf-8",
-    buffering=-1,
-    errors=None,
-    newline=None,
-    closefd=True,
-    opener=None,
-)
-"""
+# ficheroCsv: io.TextIOWrapper = open(
+#     file="fichero.csv",
+#     mode="w+",
+#     encoding="utf-8",
+#     buffering=-1,
+#     errors=None,
+#     newline=None,
+#     closefd=True,
+#     opener=None,
+# )
 
 """
 El método writer() es utilizado para escribir datos en un fichero en formato CSV.
@@ -364,15 +363,13 @@ todos los argumentos que recibe son
 >>> skipinitialspace: si es True, se van a ignorar los espacios iniciales en los campos. Por defecto es False.
 
 >>> strict: si es True, se va a lanzar un error si se detecta un formato CSV inválido. Por defecto es False.
+"""
 
-
+# csvEscribir: csv.writer = csv.writer(ficheroCsv)
 
 """
-# csv_escribir: csv.writer = csv.writer(fichero_csv)
-
-"""
-csv_escribir: csv.writer = csv.writer(
-    fichero_csv,
+csvEscribir: csv.writer = csv.writer(
+    ficheroCsv,
     dialect="excel",
     delimiter=",",
     quotechar='"',
@@ -385,7 +382,7 @@ csv_escribir: csv.writer = csv.writer(
 )
 """
 
-# * print(type(csv_escribir))
+# * print(type(csvEscribir))
 
 """
 El método writerow() es utilizado para escribir una fila en un fichero en formato CSV.
@@ -394,12 +391,12 @@ Recibe un argumento que es la fila que se va a escribir en el fichero. se le pas
 """
 
 """
-csv_escribir.writerow(["nombre", "apellido", "edad", "lenguage", "website"])
-csv_escribir.writerow(["Daniel", "Perez", 18, "Python", "https://daniel.dev"])
-csv_escribir.writerow(["Benjamin", "Morales", 18, "COBOL", "https://python3.dev"])
+csvEscribir.writerow(["nombre", "apellido", "edad", "lenguage", "website"])
+csvEscribir.writerow(["Daniel", "Perez", 18, "Python", "https://daniel.dev"])
+csvEscribir.writerow(["Benjamin", "Morales", 18, "COBOL", "https://python3.dev"])
 """
 
-# * fichero_csv.close()
+# * ficheroCsv.close()
 
 """
 with open(
@@ -411,18 +408,19 @@ with open(
     newline=None,
     closefd=True,
     opener=None,
-) as otro_fichero:
-    for linea in otro_fichero.readlines():
-        print(linea, end="\n")
+) as otrofichero:
+    for linea in otrofichero.readlines():
+        print(linea, end ="\n", file = stdout)
 """
 
 
-# # .xlsx fichero
-# # import xlrd # Debe instalarse el módulo
+# .xlsx fichero
+# import xlrd # Debe instalarse el módulo
 
 """
 xml.etree.ElementTree es un módulo de Python que proporciona una forma de trabajar con XML.
 """
+
 import xml.etree.ElementTree as ET
 
 # Crear el elemento raíz que es una etiqueta llamada root
@@ -437,9 +435,9 @@ todos los argumentos que recibe son
 >>> tag: el nombre de la etiqueta que se va a crear. Por defecto es None. Lo que significa que no se va a crear ninguna etiqueta.
 """
 root: xml.etree.ElementTree.Element = ET.Element(
-    "root", attrib={"version": "1.0"}, tag="root"
+    "root", attrib = {"version": "1.0"}
 )
-# * print(type(root),end="\n")
+# * print(type(root), end ="\n", file = stdout)
 
 # Crear un elemento hijo que es una etiqueta llamada childs
 
@@ -467,7 +465,7 @@ tree esta variable es de tipo xml.etree.ElementTree.ElementTree
 es utilizada para crear un árbol XML. A un árbol XML se le conoce como un árbol de elementos. Un árbol de elementos es una estructura de datos que se utiliza para representar un documento XML. Un árbol de elementos es un árbol en el que cada nodo es un elemento XML. Un elemento XML es una etiqueta que contiene un conjunto de atributos y un conjunto de nodos hijos. Un nodo hijo es un nodo que está conectado a otro nodo a través de una arista. Una arista es una línea que conecta dos nodos.
 """
 tree: xml.etree.ElementTree.ElementTree = ET.ElementTree(
-    element=root, file="fichero.xml"
+    element = root, file="fichero.xml"
 )
 
 with open(

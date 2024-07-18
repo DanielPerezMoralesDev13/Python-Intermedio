@@ -4,6 +4,12 @@ GitHub: https://github.com/DanielPerezMoralesDev13
 Correo electrónico: danielperezdev@proton.me 
 """
 from functools import reduce
+from sys import stdout
+from typing import Callable, List
+from typing_extensions import Protocol
+
+class Add(Protocol):
+    def __call__(self: "Add", valor: int) -> int: return valor
 
 # Tema: Higher Order Functions o Funciones de Orden Superior
 
@@ -13,44 +19,37 @@ Las funciones de orden superior son una característica importante de los lengua
 """
 
 
-def sumarUno(valor: int) -> int:
-    return valor + 1
+def sumar_uno(valor: int) -> int: return valor + 1
 
+def sumar_cinco(valor: int) -> int: return valor + 5
 
-def sumarCinco(valor: int) -> int:
-    return valor + 5
-
-
-def sumarDosValoresAñadirValor(
-    primer_valor: int, segundo_valor: int, funcionSuma: callable
+def sumar_dos_valores_añadir_valor(
+    primerValor: int, segundoValor: int, funcionSuma: Callable
 ) -> int:
-    return funcionSuma(primer_valor + segundo_valor)
+    return funcionSuma(primerValor + segundoValor)
 
 
 print(
-    sumarDosValoresAñadirValor(primer_valor=5, segundo_valor=2, funcionSuma=sumarUno),
-    end="\n",
+    sumar_dos_valores_añadir_valor(primerValor = 5, segundoValor = 2, funcionSuma = sumar_uno),
+    end="\n", file = stdout
 )
+
 print(
-    sumarDosValoresAñadirValor(primer_valor=5, segundo_valor=2, funcionSuma=sumarCinco),
-    end="\n",
+    sumar_dos_valores_añadir_valor(primerValor = 5, segundoValor = 2, funcionSuma = sumar_cinco),
+    end="\n", file = stdout
 )
 
-
-def sumarDiez(valor_original: int) -> callable:
-    def add(valor: int) -> int:
-        return valor + 10 + valor_original
-
+def sumar_diez(valorOriginal: int) -> Add:
+    def add(valor: int) -> int: return valor + 10 + valorOriginal
     return add
 
-
-añadirFuncion: callable = sumarDiez(valor_original=10)
-print(añadirFuncion(5), end="\n")
-print((sumarDiez(valor_original=5))(valor=1), end="\n")
+añadirFuncion: Add = sumar_diez(valorOriginal = 10)
+print(añadirFuncion(5), end ="\n", file = stdout)
+print((sumar_diez(valorOriginal = 5))(valor = 1), end ="\n", file = stdout)
 
 # Built-in Higher Order Functions o Funciones de Orden Superior Integradas
 
-lista_numeros: list[int] = [2, 5, 10, 21, 3, 30]
+listaNumeros: List[int] = [2, 5, 10, 21, 3, 30]
 
 # Map
 """
@@ -60,13 +59,10 @@ map() es una función que toma dos argumentos:
 La función map() toma una función y una secuencia y devuelve un iterador que produce los resultados de aplicar la función a cada elemento de la secuencia.
 """
 
+def multiplicar_dos(numero: int) -> int: return numero * 2
 
-def multiplicarDos(numero: int) -> int:
-    return numero * 2
-
-
-print(list(map(multiplicarDos, lista_numeros)), end="\n")
-print(list(map(lambda numero: numero * 2, lista_numeros)), end="\n")
+print(list(map(multiplicar_dos, listaNumeros)), end ="\n", file = stdout)
+print(list(map(lambda numero: numero * 2, listaNumeros)), end ="\n", file = stdout)
 
 # Filter
 """
@@ -77,14 +73,13 @@ La función filter() toma una función y una secuencia y devuelve un iterador qu
 """
 
 
-def filtrarMayorQueDiez(numero: int):
-    if numero > 10:
-        return True
+def filtrar_mayor_que_diez(numero: int) -> bool:
+    if numero > 10: return True
     return False
 
 
-print(list(filter(filtrarMayorQueDiez, lista_numeros)), end="\n")
-print(list(filter(lambda numero: numero > 10, lista_numeros)), end="\n")
+print(list(filter(filtrar_mayor_que_diez, listaNumeros)), end ="\n", file = stdout)
+print(list(filter(lambda numero: numero > 10, listaNumeros)), end ="\n", file = stdout)
 
 
 """
@@ -94,13 +89,11 @@ reduce() es una función que toma dos argumentos:
 La función reduce() toma una función y una secuencia y devuelve un solo valor calculado a partir de la secuencia.
 La función reduce() se encuentra en el módulo functools.
 """
+
 # Reduce
 
+def sumar_dos_valores(primerValor: int, segundoValor: int) -> int: return primerValor + segundoValor
 
-def sumarDosValores(primer_valor: int, segundo_valor: int) -> int:
-    return primer_valor + segundo_valor
-
-
-print(reduce(sumarDosValores, lista_numeros), end="\n")
-
-print(sum(lista_numeros, start=0), end="\n")
+print(reduce(sumar_dos_valores, listaNumeros), end ="\n", file = stdout)
+print(reduce(sumar_dos_valores, listaNumeros, 15), end ="\n", file = stdout)
+print(sum(listaNumeros, start = 0), end ="\n", file = stdout)
